@@ -97,8 +97,8 @@ app.put("/:table/:id", (req, res) => {
                 .select()
                 .where('id', id)
                 .first()
-                .then((tableType) => {
-                    if (tableType) {
+                .then((result) => {
+                    if (result) {
                         const bodyObj = req.body;
                         database(tableType)
                             .update(bodyObj, '*')
@@ -137,8 +137,8 @@ app.delete("/:table/:id", (req, res) => {
                 .select()
                 .where('id', id)
                 .first()
-                .then((tableType) => {
-                    if (tableType) {
+                .then((result) => {
+                    if (result) {
                         database(tableType)
                             .del()
                             .where('id', id)
@@ -183,7 +183,6 @@ function getTableType(parameter) {
         default:
             return null;
             break;
-
     }
 }
 
@@ -232,10 +231,7 @@ function returnPOSTBody(tableType, req) {
         default:
             returnBody = {};
             break;
-
     }
-
-
     return returnBody;
 }
 

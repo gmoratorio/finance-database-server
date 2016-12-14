@@ -37,6 +37,4 @@ exports.down = function(knex, Promise) {
         .then(() => {
             return knex.schema.dropTableIfExists('property')
         });
-
-    // return knex.schema.dropTableIfExists('property');
 };
