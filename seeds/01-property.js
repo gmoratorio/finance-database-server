@@ -1,5 +1,5 @@
 exports.seed = function(knex, Promise) {
-    return knex.raw('TRUNCATE property; ALTER SEQUENCE property_id_seq restart with 6;')
+    return knex.raw('DELETE FROM property; ALTER SEQUENCE property_id_seq restart with 7;')
         .then(() => {
             return knex('property').del()
                 .then(() => {
@@ -33,6 +33,15 @@ exports.seed = function(knex, Promise) {
                         }),
                         knex('property').insert({
                             id: 4,
+                            address: '5260 Wyandot Street',
+                            city: 'Denver',
+                            state: 'CO',
+                            zip: 80221,
+                            unit: 'Basement',
+                            rent: 0
+                        }),
+                        knex('property').insert({
+                            id: 5,
                             address: '3526 N Cascade Ave',
                             city: 'Colorado Springs',
                             state: 'CO',
@@ -41,7 +50,7 @@ exports.seed = function(knex, Promise) {
                             rent: 79500
                         }),
                         knex('property').insert({
-                            id: 5,
+                            id: 6,
                             address: '3526 N Cascade Ave',
                             city: 'Colorado Springs',
                             state: 'CO',
